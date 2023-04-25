@@ -7,5 +7,6 @@ public final class ExtensionLands extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        LandWorld world;
     }
 }
