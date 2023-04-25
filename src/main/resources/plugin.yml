@@ -1,0 +1,4 @@
+name: ExtensionLands
+version: '${project.version}'
+main: me.niresed.extensionlands.ExtensionLands
+api-version: 1.16
