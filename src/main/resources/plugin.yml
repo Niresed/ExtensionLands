@@ -1,4 +1,7 @@
 name: ExtensionLands
 version: '${project.version}'
-main: me.niresed.extensionlands.ExtensionLands
+main: me.niresed.extensionlands.Main.ExtensionLands
 api-version: 1.16
+commands:
+  addFlag:
+    description: add flag to player
