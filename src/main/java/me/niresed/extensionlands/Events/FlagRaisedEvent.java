@@ -4,18 +4,19 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.block.BlockEvent;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class FlagRaised extends BlockEvent {
+public class FlagRaisedEvent extends Event {
     private static final HandlerList handlerList = new HandlerList();
-    private final Event event;
+    private final ItemStack itemStack;
 
+    private final Block block;
     private final Player player;
 
-    public FlagRaised(Block block, Event event, Player player){
-        super(block);
-        this.event = event;
+    public FlagRaisedEvent(ItemStack itemStack, Block block, Player player){
+        this.itemStack = itemStack;
+        this.block = block;
         this.player = player;
     }
 
@@ -23,8 +24,12 @@ public class FlagRaised extends BlockEvent {
         return player;
     }
 
-    public Event getEvent(){
-        return event;
+    public ItemStack getItemStack(){
+        return itemStack;
+    }
+
+    public Block getBlock() {
+        return block;
     }
 
     @Override

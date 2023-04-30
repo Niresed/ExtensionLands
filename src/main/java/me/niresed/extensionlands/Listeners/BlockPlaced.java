@@ -1,26 +1,33 @@
 package me.niresed.extensionlands.Listeners;
 
-import me.niresed.extensionlands.Block.FlagData;
+import me.niresed.extensionlands.Events.FlagRaisedEvent;
 import org.bukkit.Bukkit;
-import org.bukkit.DyeColor;
 import org.bukkit.Material;
-import org.bukkit.block.Banner;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.banner.Pattern;
+import org.bukkit.craftbukkit.v1_16_R3.inventory.CraftItemStack;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BannerMeta;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class BlockPlaced implements Listener {
 
     @EventHandler
-    public void onBlockPlaced(BlockPlaceEvent event){
-        if (event.getBlock().getType() == Material.BLACK_BANNER){
-            Block block = event.getBlock();
+    public void onBlockPlaced(BlockPlaceEvent ev) {
+        if (ev.getBlock().getType() == Material.BLACK_BANNER) {
+
+            ItemStack itemInHand = ev.getItemInHand();
+            net.minecraft.server.v1_16_R3.ItemStack assItemInHandCopy = CraftItemStack.asNMSCopy(itemInHand);
+            String checkTag = String.valueOf(assItemInHandCopy.getTag());
+
+            if (checkTag.contains("flagData:1b")) {
+
+                FlagRaisedEvent flagRaisedEvent = new FlagRaisedEvent(itemInHand, ev.getBlock(), ev.getPlayer());
+                Bukkit.getServer().getPluginManager().callEvent(flagRaisedEvent);
+
+            }
+
         }
+
     }
+
 }
