@@ -30,7 +30,6 @@ public class CheckLocation {
             x += 1;
             z = -3;
         }
-        Bukkit.getLogger().info(String.valueOf(check));
         return check;
     }
 }

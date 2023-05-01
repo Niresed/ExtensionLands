@@ -27,7 +27,6 @@ public class FlagRaised implements Listener {
         if (ev.getTag().contains("flagDataOfLandId:" + Objects.requireNonNull(landPlayer.getOwningLand()).getId())) {
             Location location = ev.getBlock().getLocation();
             if (CheckLocation.checkTheArea(location, api, landPlayer)){
-                Bukkit.getLogger().info("Ура");
                 assert land != null;
                 land.claimChunk(landPlayer, Objects.requireNonNull(Bukkit.getWorld("world")), location.getChunk().getX(), location.getChunk().getZ());
             }

@@ -19,7 +19,6 @@ public class BlockPlaced implements Listener {
             String checkTag = String.valueOf(assItemInHandCopy.getTag());
             Bukkit.getLogger().info(checkTag);
             if (checkTag.contains("flagData:1b")) {
-                Bukkit.getLogger().info("Ну");
                 FlagRaisedEvent flagRaisedEvent = new FlagRaisedEvent(itemInHand, ev.getBlock(), ev.getPlayer(), checkTag);
                 Bukkit.getServer().getPluginManager().callEvent(flagRaisedEvent);
 
