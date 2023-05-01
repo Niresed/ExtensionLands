@@ -19,7 +19,7 @@ public class CheckLocation {
         for (int i = 0; i < 6; i++){
             for (int s = 0; s < 6; s++){
                 if (Objects.equals(api.getLandByChunk(chunk.getWorld(), chunk.getX() + x, chunk.getZ() + z), player.getOwningLand())) {
-                    if (x >= -1 && x <= 1 && z >= -1 && z <= 1){
+                    if ((x >= -1 && x <= 1 && z >= -1 && z <= 1) && (x != 0 || z != 0)){
                         check = true;
                     }
                 } else if (api.getLandByChunk(chunk.getWorld(), chunk.getX() + x, chunk.getZ() + z) != null) {
