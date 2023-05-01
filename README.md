@@ -1,1 +1,1 @@
-# ExtensionLands 0.1
+# ExtensionLands 1.0 BETA
