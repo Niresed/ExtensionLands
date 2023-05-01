@@ -14,14 +14,13 @@ public class BlockPlaced implements Listener {
     @EventHandler
     public void onBlockPlaced(BlockPlaceEvent ev) {
         if (ev.getBlock().getType() == Material.BLACK_BANNER) {
-
             ItemStack itemInHand = ev.getItemInHand();
             net.minecraft.server.v1_16_R3.ItemStack assItemInHandCopy = CraftItemStack.asNMSCopy(itemInHand);
             String checkTag = String.valueOf(assItemInHandCopy.getTag());
-
+            Bukkit.getLogger().info(checkTag);
             if (checkTag.contains("flagData:1b")) {
-
-                FlagRaisedEvent flagRaisedEvent = new FlagRaisedEvent(itemInHand, ev.getBlock(), ev.getPlayer());
+                Bukkit.getLogger().info("Ну");
+                FlagRaisedEvent flagRaisedEvent = new FlagRaisedEvent(itemInHand, ev.getBlock(), ev.getPlayer(), checkTag);
                 Bukkit.getServer().getPluginManager().callEvent(flagRaisedEvent);
 
             }

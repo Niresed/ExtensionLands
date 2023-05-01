@@ -8,16 +8,19 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class FlagRaisedEvent extends Event {
-    private static final HandlerList handlerList = new HandlerList();
+    private static final HandlerList handlers = new HandlerList();
     private final ItemStack itemStack;
 
     private final Block block;
     private final Player player;
 
-    public FlagRaisedEvent(ItemStack itemStack, Block block, Player player){
+    private final String tag;
+
+    public FlagRaisedEvent(ItemStack itemStack, Block block, Player player, String tag){
         this.itemStack = itemStack;
         this.block = block;
         this.player = player;
+        this.tag = tag;
     }
 
     public Player getPlayer(){
@@ -32,8 +35,18 @@ public class FlagRaisedEvent extends Event {
         return block;
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    @NotNull
     @Override
-    public @NotNull HandlerList getHandlers() {
-        return handlerList;
+    public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    @NotNull
+    public static HandlerList getHandlerList() {
+        return handlers;
     }
 }

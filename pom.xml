@@ -6,7 +6,7 @@
 
     <groupId>me.niresed</groupId>
     <artifactId>ExtensionLands</artifactId>
-    <version>0.1</version>
+    <version>1.0-BETA</version>
     <packaging>jar</packaging>
 
     <name>ExtensionLands</name>
