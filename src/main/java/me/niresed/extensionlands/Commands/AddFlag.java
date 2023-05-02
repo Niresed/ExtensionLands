@@ -6,7 +6,6 @@ import me.angeschossen.lands.api.player.LandPlayer;
 import me.niresed.extensionlands.Main.ExtensionLands;
 import net.kyori.adventure.text.Component;
 import net.minecraft.server.v1_16_R3.NBTTagCompound;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -36,7 +35,7 @@ public class AddFlag implements CommandExecutor {
             Land land = landPlayer.getOwningLand();
 
             if (land == null){
-                player.sendMessage(ChatColor.RED + "You haven't land !!!");
+                player.sendMessage(ChatColor.RED + "You haven't land !");
                 return true;
             }
 
