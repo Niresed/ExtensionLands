@@ -8,10 +8,13 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class FlagRaisedEvent extends Event {
+
     private static final HandlerList handlers = new HandlerList();
+
     private final ItemStack itemStack;
 
     private final Block block;
+
     private final Player player;
 
     private final String tag;

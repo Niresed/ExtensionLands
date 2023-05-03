@@ -21,13 +21,11 @@ public class FlagRaised implements Listener {
         ItemStack itemStack = ev.getItemStack();
         LandsIntegration api = LandsIntegration.of(ExtensionLands.getPlugin(ExtensionLands.class));
         LandPlayer landPlayer = api.getLandPlayer(ev.getPlayer().getUniqueId());
-        if (landPlayer == null){
-            return;
-        }
+        if (landPlayer == null) return;
+
         Land land = landPlayer.getOwningLand();
-        if (land == null) {
-            return;
-        }
+        if (land == null) return;
+
         if (ev.getTag().contains("flagDataOfLandId:" + Objects.requireNonNull(landPlayer.getOwningLand()).getId())) {
             Location location = ev.getBlock().getLocation();
             if (CheckLocation.checkTheArea(location, api, landPlayer)){
