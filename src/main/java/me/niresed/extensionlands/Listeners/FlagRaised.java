@@ -8,7 +8,6 @@ import me.niresed.extensionlands.Events.FlagRaisedEvent;
 import me.niresed.extensionlands.Main.ExtensionLands;
 import me.niresed.extensionlands.Utils.CheckLocation;
 import org.bukkit.*;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,7 +20,6 @@ public class FlagRaised implements Listener {
         LandsIntegration api = LandsIntegration.of(ExtensionLands.getPlugin(ExtensionLands.class));
         LandPlayer landPlayer = api.getLandPlayer(ev.getPlayer().getUniqueId());
         Player player = ev.getPlayer();
-        World world = Bukkit.getWorld("world");
 
         if (landPlayer == null)
             return;
@@ -37,8 +35,6 @@ public class FlagRaised implements Listener {
             Location location = ev.getBlock().getLocation();
             if (CheckLocation.checkTheArea(location, api, landPlayer)) {
                 land.claimChunk(landPlayer, Objects.requireNonNull(Bukkit.getWorld("world")), ev.getBlock().getChunk().getX(), ev.getBlock().getChunk().getZ());
-                Block block = ev.getBlock();
-                block.setType(Material.AIR);
             }
         } else {
             player.sendMessage(ChatColor.RED + "Вы являетесь жителем другого города");

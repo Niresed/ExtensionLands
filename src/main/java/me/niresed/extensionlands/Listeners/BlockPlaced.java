@@ -3,6 +3,8 @@ package me.niresed.extensionlands.Listeners;
 import me.niresed.extensionlands.Events.FlagRaisedEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.craftbukkit.v1_16_R3.inventory.CraftItemStack;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,7 +23,6 @@ public class BlockPlaced implements Listener {
             if (checkTag.contains("flagData:1b")) {
                 FlagRaisedEvent flagRaisedEvent = new FlagRaisedEvent(itemInHand, ev.getBlock(), ev.getPlayer(), checkTag);
                 Bukkit.getServer().getPluginManager().callEvent(flagRaisedEvent);
-
             }
 
         }
