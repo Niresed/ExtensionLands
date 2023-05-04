@@ -11,7 +11,6 @@ import java.util.Objects;
 public class CheckLocation {
     public static boolean checkTheArea (Location location, LandsIntegration api, LandPlayer player) {
         Chunk chunk = location.getChunk();
-        Land land = api.getLandByChunk(chunk.getWorld(), chunk.getX(), chunk.getZ());
         int x = -3;
         int z = -3;
         boolean check = false;
