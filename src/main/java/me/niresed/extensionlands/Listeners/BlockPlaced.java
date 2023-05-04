@@ -1,11 +1,14 @@
 package me.niresed.extensionlands.Listeners;
 
 import me.niresed.extensionlands.Events.FlagRaisedEvent;
+import net.minecraft.server.v1_16_R3.TileEntityBanner;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
+import org.bukkit.block.Banner;
+import org.bukkit.craftbukkit.v1_16_R3.block.CraftBanner;
+import org.bukkit.craftbukkit.v1_16_R3.block.CraftBlock;
 import org.bukkit.craftbukkit.v1_16_R3.inventory.CraftItemStack;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -24,7 +27,6 @@ public class BlockPlaced implements Listener {
                 FlagRaisedEvent flagRaisedEvent = new FlagRaisedEvent(itemInHand, ev.getBlock(), ev.getPlayer(), checkTag);
                 Bukkit.getServer().getPluginManager().callEvent(flagRaisedEvent);
             }
-
         }
 
     }
