@@ -31,7 +31,7 @@ public class FlagData {
         Land land = landPlayer.getOwningLand();
 
         if (land == null) {
-            player.sendMessage(ChatColor.RED + "You haven't land !");
+            player.sendMessage(ChatColor.RED + "Вы не являетесь жителем не одного города\"");
             return null;
         }
 
@@ -56,22 +56,15 @@ public class FlagData {
         return extensionFlag;
     }
 
-    public static Boolean hasFlagData(ItemStack item, Player player, String tag, Block block){
-        if (item != null){
-            LandsIntegration api = LandsIntegration.of(ExtensionLands.getPlugin(ExtensionLands.class));
-            LandPlayer landPlayer = api.getLandPlayer(player.getUniqueId());
-            if (landPlayer == null) return null;
 
-            Land land = landPlayer.getOwningLand();
-            if (land == null) return null;
 
-            if (tag.contains("flagDataOfLandId:" + Objects.requireNonNull(landPlayer.getOwningLand()).getId())) {
-                Location location = block.getLocation();
-                return CheckLocation.checkTheArea(location, api, landPlayer);
-            }
+    public static boolean hasFlagDataOfLandId(LandPlayer landPlayer, String tag){
+        if (landPlayer != null && tag != null) {
+            return tag.contains("flagDataOfLandId:" + Objects.requireNonNull(landPlayer.getOwningLand()).getId());
+
         } else {
             throw new NullPointerException("опять null ?");
         }
-        return false;
     }
+
 }
