@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import java.util.Objects;
 
 public class CheckLocation {
+
     public static boolean checkTheArea (Location location, LandsIntegration api, LandPlayer player) {
         Chunk chunk = location.getChunk();
         int x = -3;

@@ -15,7 +15,6 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class BlockPlaced implements Listener {
-
     @EventHandler
     public void onBlockPlaced(BlockPlaceEvent ev) {
         if (ev.getBlock().getType() == Material.BLACK_BANNER) {
