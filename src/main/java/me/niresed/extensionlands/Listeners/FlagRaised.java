@@ -34,7 +34,7 @@ public class FlagRaised implements Listener {
         if (FlagData.hasFlagDataOfLandId(landPlayer, ev.getTag())) {
             Location location = ev.getBlock().getLocation();
             if (CheckLocation.checkTheArea(location, api, landPlayer)) {
-                land.claimChunk(landPlayer, Objects.requireNonNull(Bukkit.getWorld("world")), ev.getBlock().getChunk().getX(), ev.getBlock().getChunk().getZ());
+                land.claimChunk(landPlayer, Objects.requireNonNull(Bukkit.getWorld("PotolotCraft")), ev.getBlock().getChunk().getX(), ev.getBlock().getChunk().getZ());
             }
         } else {
             player.sendMessage(ChatColor.RED + "Вы являетесь жителем другого города");
