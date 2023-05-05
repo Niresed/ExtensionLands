@@ -39,6 +39,7 @@ public class FlagRaised implements Listener {
             }
         } else {
             player.sendMessage(ChatColor.RED + "Вы являетесь жителем другого города");
+            return;
         }
 
         ev.getBlock().setType(Material.AIR);
