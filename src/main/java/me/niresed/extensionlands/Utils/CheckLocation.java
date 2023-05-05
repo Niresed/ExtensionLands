@@ -23,7 +23,7 @@ public class CheckLocation {
                     if ((x >= -1 && x <= 1 && z >= -1 && z <= 1) && (x != 0 || z != 0)){
                         check = true;
                     }
-                } else if (api.getLandByChunk(chunk.getWorld(), chunk.getX() + x, chunk.getZ() + z) != null) {
+                } else if (land != null) {
                     return false;
                 }
                 z += 1;
