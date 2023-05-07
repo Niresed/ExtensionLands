@@ -12,6 +12,9 @@ public final class ExtensionLands extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new BlockPlaced(), this);
         getServer().getPluginManager().registerEvents(new FlagRaised(), this);

@@ -18,7 +18,7 @@ public class FlagRaisedEvent extends Event {
 
     private final String tag;
 
-    public FlagRaisedEvent(ItemStack itemStack, Block block, Player player, String tag){
+    public FlagRaisedEvent(ItemStack itemStack, Block block, Player player, String tag) {
         this.itemStack = itemStack;
         this.block = block;
         this.player = player;
