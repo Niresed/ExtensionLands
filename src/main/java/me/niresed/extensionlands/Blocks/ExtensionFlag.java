@@ -58,6 +58,10 @@ public class ExtensionFlag {
         return extensionFlag;
     }
     public static void addExtensionFlagToPlayer(Player player) {
+        if (player == null) {
+            throw new NullPointerException("again this null ?");
+        }
+
         Plugin plugin = ExtensionLands.getPlugin(ExtensionLands.class);
         ItemStack item = generateFlag(player, plugin);
 
@@ -83,7 +87,7 @@ public class ExtensionFlag {
             return tag.contains("flagDataOfLandId:" + Objects.requireNonNull(landPlayer.getOwningLand()).getId());
 
         } else {
-            throw new NullPointerException("опять null ?");
+            throw new NullPointerException("again this null ?");
         }
     }
 
