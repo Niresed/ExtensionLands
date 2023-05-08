@@ -10,6 +10,9 @@ tax: 'Un keep: '
 
 # errors
 
+# if player inventory is full
+inventory is full: 'Your inventory is full'
+
 # if this place is already occupied by these cities
 taken chunk: 'on this chunk your city has already taken a place.'
 

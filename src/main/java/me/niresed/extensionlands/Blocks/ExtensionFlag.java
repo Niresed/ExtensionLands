@@ -61,12 +61,16 @@ public class ExtensionFlag {
         Plugin plugin = ExtensionLands.getPlugin(ExtensionLands.class);
         ItemStack item = generateFlag(player, plugin);
 
-        if (item != null && isInventoryFull(player)) {
-            player.getInventory().addItem(item);
-            Bukkit.getLogger().info(player.getInventory().addItem(item).toString());
-            return;
+        if (item != null) {
+            if (isInventoryFull(player)) {
+                player.getInventory().addItem(item);
+                Bukkit.getLogger().info(player.getInventory().addItem(item).toString());
+                return;
+            }
+
+            player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("inventory is full")));
+
         }
-        player.sendMessage("");
     }
 
     private static boolean isInventoryFull(Player player) {
