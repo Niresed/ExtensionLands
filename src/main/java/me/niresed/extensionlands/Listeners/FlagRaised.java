@@ -33,6 +33,7 @@ public class FlagRaised implements Listener {
                 ev.getBlock().setType(Material.AIR);
             }
         }, 1L);
+
         Player player = ev.getPlayer();
 
         if (world == null) {

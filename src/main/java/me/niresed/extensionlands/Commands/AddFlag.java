@@ -15,6 +15,7 @@ public class AddFlag implements CommandExecutor {
             Player player = (Player) sender;
             ExtensionFlag.addExtensionFlagToPlayer(player);
         }
+
         return true;
     }
 }
