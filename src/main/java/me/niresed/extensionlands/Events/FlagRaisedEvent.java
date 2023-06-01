@@ -25,11 +25,11 @@ public class FlagRaisedEvent extends Event {
         this.tag = tag;
     }
 
-    public Player getPlayer(){
+    public Player getPlayer() {
         return player;
     }
 
-    public ItemStack getItemStack(){
+    public ItemStack getItemStack() {
         return itemStack;
     }
 

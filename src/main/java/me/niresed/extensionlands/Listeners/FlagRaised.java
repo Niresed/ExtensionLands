@@ -28,9 +28,8 @@ public class FlagRaised implements Listener {
 
     private final World world = Bukkit.getWorld(Objects.requireNonNull(plugin.getConfig().getString("world")));
 
-    // TODO: town claim function
     @EventHandler
-    public void onFlagRaised (FlagRaisedEvent ev) throws NotRegisteredException {
+    public void onFlagRaised(FlagRaisedEvent ev) throws NotRegisteredException {
 
         BukkitScheduler scheduler = plugin.getServer().getScheduler();
         scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
@@ -65,7 +64,7 @@ public class FlagRaised implements Listener {
                     stats(town, location.getChunk(), player);
                     return;
 
-                } else if (checkTheLocation != null){
+                } else if (checkTheLocation != null) {
                     player.sendMessage(ChatColor.RED + flagRaisedInTheWrongPlace);
                 }
 

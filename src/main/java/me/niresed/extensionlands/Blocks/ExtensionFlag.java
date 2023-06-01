@@ -49,6 +49,7 @@ public class ExtensionFlag {
 
         return extensionFlag;
     }
+
     public static void addExtensionFlagToPlayer(Player player) {
         if (player == null) {
             throw new NullPointerException("again this null ?");
