@@ -16,6 +16,7 @@ public class BlockPlaced implements Listener {
             ItemStack itemInHand = ev.getItemInHand();
             net.minecraft.server.v1_16_R3.ItemStack assItemInHandCopy = CraftItemStack.asNMSCopy(itemInHand);
             String checkTag = String.valueOf(assItemInHandCopy.getTag());
+            Bukkit.getLogger().info(checkTag);
 
             if (checkTag.contains("flagData:1b")) {
                 FlagRaisedEvent flagRaisedEvent = new FlagRaisedEvent(itemInHand, ev.getBlock(), ev.getPlayer(), checkTag);

@@ -1,8 +1,9 @@
 package me.niresed.extensionlands.Blocks;
 
-import me.angeschossen.lands.api.LandsIntegration;
-import me.angeschossen.lands.api.land.Land;
-import me.angeschossen.lands.api.player.LandPlayer;
+import com.palmergames.bukkit.towny.TownyAPI;
+import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
+import com.palmergames.bukkit.towny.object.Resident;
+import com.palmergames.bukkit.towny.object.Town;
 import me.niresed.extensionlands.Main.ExtensionLands;
 import net.kyori.adventure.text.Component;
 import net.minecraft.server.v1_16_R3.NBTTagCompound;
@@ -20,30 +21,21 @@ import java.util.Random;
 
 public class ExtensionFlag {
     private static ItemStack generateFlag(Player player, Plugin plugin) {
-        LandsIntegration api = LandsIntegration.of(ExtensionLands.getPlugin(ExtensionLands.class));
+        Town town = TownyAPI.getInstance().getTown(player);
 
-        LandPlayer landPlayer = api.getLandPlayer(player.getUniqueId());
-
-        if (landPlayer == null){
-            player.sendMessage(ChatColor.RED + plugin.getConfig().getString("land player error"));
-            throw new NullPointerException(String.format("LandPlayer not found for player %s%n", player.getName()));
-        }
-
-        Land land = landPlayer.getOwningLand();
-
-        if (land == null) {
+        if (town == null) {
             player.sendMessage(ChatColor.RED + plugin.getConfig().getString("player hasn't city"));
             return null;
         }
 
-        ItemStack extensionFlag = new ItemStack(Material.BLACK_BANNER);
+        ItemStack extensionFlag = new ItemStack(Material.BLACK_BANNER, 1);
 
         net.minecraft.server.v1_16_R3.ItemStack assCopyExtensionFlag = CraftItemStack.asNMSCopy(extensionFlag);
 
         NBTTagCompound assExtensionFlagTag = new NBTTagCompound();
 
         assExtensionFlagTag.setBoolean("flagData", true);
-        assExtensionFlagTag.setInt("flagDataOfLandId", land.getId());
+        assExtensionFlagTag.setString("flagId", town.getUUID().toString());
         assExtensionFlagTag.setLong("uniqueId", new Random().nextLong());
 
         assCopyExtensionFlag.setTag(assExtensionFlagTag);
@@ -68,7 +60,7 @@ public class ExtensionFlag {
         if (item != null) {
             if (isInventoryFull(player)) {
                 player.getInventory().addItem(item);
-                Bukkit.getLogger().info(player.getInventory().addItem(item).toString());
+//                Bukkit.getLogger().info(player.getInventory().addItem(item).toString());
                 return;
             }
 
@@ -82,13 +74,21 @@ public class ExtensionFlag {
         return (emp != -1);
     }
 
-    public static boolean hasFlagDataOfLandId(LandPlayer landPlayer, String tag) {
-        if (landPlayer != null && tag != null) {
-            return tag.contains("flagDataOfLandId:" + Objects.requireNonNull(landPlayer.getOwningLand()).getId());
+    public static boolean hasFlagDataOfLandId(Player player, String tag) throws NotRegisteredException {
+        Resident resident = TownyAPI.getInstance().getResident(player);
+        if (player != null && tag != null) {
+            assert resident != null;
+            try {
+                Bukkit.getLogger().info(resident.getTown().getUUID().toString());
+                return tag.contains("flagId:\"" + resident.getTown().getUUID().toString() + "\"");
 
+            } catch (NotRegisteredException ignored) {
+                Bukkit.getLogger().info("Мдамс");
+            }
         } else {
             throw new NullPointerException("again this null ?");
         }
+        return false;
     }
 
 }
