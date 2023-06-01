@@ -58,7 +58,6 @@ public class FlagRaised implements Listener {
                 Boolean checkTheLocation = CheckLocation.checkTheArea(location, plugin, player);
 
                 if (Boolean.TRUE.equals(checkTheLocation)) {
-                    Bukkit.getLogger().info("Почти");
                     Chunk chunk = ev.getBlock().getChunk();
                     WorldCoord[] worldCoords = {new WorldCoord(world, chunk.getX(), chunk.getZ())};
                     TownClaim townClaim = new TownClaim(Towny.getPlugin(), player, town, Arrays.asList(worldCoords), false, true, false);

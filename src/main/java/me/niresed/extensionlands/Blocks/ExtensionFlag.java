@@ -60,7 +60,6 @@ public class ExtensionFlag {
         if (item != null) {
             if (isInventoryFull(player)) {
                 player.getInventory().addItem(item);
-//                Bukkit.getLogger().info(player.getInventory().addItem(item).toString());
                 return;
             }
 
@@ -79,11 +78,10 @@ public class ExtensionFlag {
         if (player != null && tag != null) {
             assert resident != null;
             try {
-                Bukkit.getLogger().info(resident.getTown().getUUID().toString());
                 return tag.contains("flagId:\"" + resident.getTown().getUUID().toString() + "\"");
 
             } catch (NotRegisteredException ignored) {
-                Bukkit.getLogger().info("Мдамс");
+
             }
         } else {
             throw new NullPointerException("again this null ?");
