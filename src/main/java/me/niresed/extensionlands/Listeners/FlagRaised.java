@@ -4,7 +4,6 @@ import com.palmergames.bukkit.towny.Towny;
 import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Town;
-import com.palmergames.bukkit.towny.object.TownBlock;
 import com.palmergames.bukkit.towny.object.WorldCoord;
 import com.palmergames.bukkit.towny.tasks.TownClaim;
 import me.niresed.extensionlands.Blocks.ExtensionFlag;
@@ -18,9 +17,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class FlagRaised implements Listener {
 
@@ -32,6 +29,7 @@ public class FlagRaised implements Listener {
     public void onFlagRaised(FlagRaisedEvent ev) throws NotRegisteredException {
 
         BukkitScheduler scheduler = plugin.getServer().getScheduler();
+
         scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
             @Override
             public void run() {
@@ -43,7 +41,9 @@ public class FlagRaised implements Listener {
 
         if (world == null) {
             player.sendMessage(ChatColor.RED + "ExtensionLands: Something went wrong with world, please contact the administration about this error.");
-            throw new NullPointerException(String.format("there is no world called %s%n", plugin.getConfig().getString("world")));
+
+            throw new NullPointerException(String.format("there is no world called %s%n",
+                    plugin.getConfig().getString("world")));
         }
         Town town = TownyAPI.getInstance().getTown(player);
 
@@ -58,8 +58,9 @@ public class FlagRaised implements Listener {
 
                 if (Boolean.TRUE.equals(checkTheLocation)) {
                     Chunk chunk = ev.getBlock().getChunk();
-                    WorldCoord[] worldCoords = {new WorldCoord(world, chunk.getX(), chunk.getZ())};
-                    TownClaim townClaim = new TownClaim(Towny.getPlugin(), player, town, Arrays.asList(worldCoords), false, true, false);
+                    ArrayList<WorldCoord> worldCoords = new ArrayList<>();
+                    worldCoords.add(new WorldCoord(world, chunk.getX(), chunk.getZ()));
+                    TownClaim townClaim = new TownClaim(Towny.getPlugin(), player, town, worldCoords, false, true, false);
                     townClaim.run();
                     stats(town, location.getChunk(), player);
                     return;
@@ -74,6 +75,7 @@ public class FlagRaised implements Listener {
         }
 
         ExtensionFlag.addExtensionFlagToPlayer(player);
+
     }
 
     private void stats(Town town, Chunk chunk, Player player) {
@@ -88,4 +90,5 @@ public class FlagRaised implements Listener {
         stat += "\n" + tax + town.getTaxes();
         player.sendMessage(stat);
     }
+
 }

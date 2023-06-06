@@ -2,7 +2,7 @@
 world: 'world'
 
 # upon successful purchase of a chunk (recommendations: leave a space at the end)
-successful purchase: 'You have successfully bought a chunk.'
+successful purchase: 'You have successfully bought a chunk. '
 coordinates of a chunk: 'Coordinates of a chunk: '
 chunk amount: 'Total number of chunks in your city: '
 tax: 'Taxes: '
@@ -15,10 +15,6 @@ inventory is full: 'Your inventory is full'
 
 # if this place is already occupied by these cities
 taken chunk: 'on this chunk your city has already taken a place.'
-
-# can be deleted
-# if not found a LandPlayer
-#land player error: 'ExtensionLands: Something went wrong with LandPlayer, please contact the administration about this error.'
 
 # if player doesn't have city
 player hasn't city: 'You are not a resident of any city.'
